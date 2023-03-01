@@ -1,11 +1,11 @@
 #!/bin/sh
-echo root:orbit |sudo chpasswd root
-sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
-sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+echo root:orbit |sudo chpasswd root &&
+sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config &&
+sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config &&
 
-apt-get update && apt-get install vim nano sysstat vnstat curl -y
+apt-get update && apt-get install vim nano sysstat vnstat curl -y &&
 
-mkdir -p ~/docker/fb/config ~/docker/fb/myfiles
+mkdir -p ~/docker/fb/config ~/docker/fb/myfiles &&
 docker run -d --name fb \
   --restart=unless-stopped \
   -e PUID=$UID \
@@ -27,11 +27,8 @@ sh get-docker.sh &&
 timedatectl set-timezone Asia/Shanghai &&
 mkdir -p /root/vertex &&
 chmod 777 /root/vertex &&
-docker run -d --name vertex --restart unless-stopped --network host -v /root/vertex:/vertex -e TZ=Asia/Shanghai lswl/vertex:stable
-
+docker run -d --name vertex --restart unless-stopped --network host -v /root/vertex:/vertex -e TZ=Asia/Shanghai lswl/vertex:stable &&
 echo -e "y\n1\nn\nn\ny\n" | bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Dedicated-Seedbox/main/Install.sh) orbit orbit 4096
-
-exit
 
 cat vertex/data/password
 

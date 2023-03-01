@@ -1,6 +1,5 @@
 #!/bin/sh
-sudo apt update
-sudo apt upgrade
+sudo apt-get update -y && sudo apt-get upgrade -y
 echo root:dingning. |sudo chpasswd root
 sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;

@@ -4,7 +4,7 @@ sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config &&
 
 apt-get update && apt-get install vim nano sysstat vnstat curl -y &&
-
+curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
 mkdir -p ~/docker/fb/config ~/docker/fb/myfiles &&
 docker run -d --name fb \
   --restart=unless-stopped \
@@ -16,8 +16,7 @@ docker run -d --name fb \
   -v ~/docker/fb/config:/config \
   -v /:/myfiles \
   --mount type=tmpfs,destination=/tmp \
-  80x86/filebrowser:2.9.4-amd64
-  
+  80x86/filebrowser:2.9.4-amd64 &&
 apt update -y &&
 apt upgrade -y &&
 apt install apparmor apparmor-utils -y &&
@@ -28,7 +27,7 @@ timedatectl set-timezone Asia/Shanghai &&
 mkdir -p /root/vertex &&
 chmod 777 /root/vertex &&
 docker run -d --name vertex --restart unless-stopped --network host -v /root/vertex:/vertex -e TZ=Asia/Shanghai lswl/vertex:stable &&
-echo -e "y\n1\nn\nn\ny\n" | bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Dedicated-Seedbox/main/Install.sh) orbit orbit 4096
+echo -e "y\n1\nn\nn\ny\n" | bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Dedicated-Seedbox/main/Install.sh) orbit orbit 4096 &&
 
 cat vertex/data/password
 

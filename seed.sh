@@ -1,10 +1,13 @@
 #!/bin/sh
 apt-get install sudo &&
+sudo apt-get install xfsprogs -y &&
+sudo modprobe -v xfs &&
 apt update -y &&
 apt upgrade -y &&
 apt-get update && apt-get install vim nano sysstat vnstat curl -y &&
+apt install curl -y &&
 curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh &&
-mkdir -p ~/docker/fb/config ~/docker/fb/myfiles &&
+mkdir -p ~/docker/fb/config ~/docker/fb/myfiles
 docker run -d --name fb \
   --restart=unless-stopped \
   -e PUID=$UID \
@@ -19,9 +22,6 @@ docker run -d --name fb \
 apt update -y &&
 apt upgrade -y &&
 apt install apparmor apparmor-utils -y &&
-apt install curl -y &&
-curl -fsSL https://get.docker.com -o get-docker.sh &&
-sh get-docker.sh &&
 timedatectl set-timezone Asia/Shanghai &&
 mkdir -p /root/vertex &&
 chmod 777 /root/vertex &&

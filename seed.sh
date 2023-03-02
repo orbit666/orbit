@@ -27,7 +27,7 @@ mkdir -p /root/vertex &&
 chmod 777 /root/vertex &&
 docker run -d --name vertex --restart unless-stopped --network host -v /root/vertex:/vertex -e TZ=Asia/Shanghai lswl/vertex:stable &&
 echo -e "y\n1\nn\nn\ny\n" | bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Dedicated-Seedbox/main/Install.sh) orbit orbit 4096 &&
-
+bash <(wget -qO- https://raw.githubusercontent.com/orbit666/orbit/master/disktest.sh) &&
 echo -e "\033[32mVertex默认密码： $(cat vertex/data/password)\033[0m" &&
 echo -e "\033[32mVertex： $(wget -qO- https://api.ipify.org):3000 默认账号：admin\033[0m" &&
 echo -e "\033[32mqbitorrent： $(wget -qO- https://api.ipify.org):8080 默认账号和密码相同：orbit\033[0m" &&

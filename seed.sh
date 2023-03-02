@@ -3,6 +3,10 @@ apt-get install sudo &&
 sudo apt-get install xfsprogs -y &&
 apt install apparmor apparmor-utils -y &&
 sudo modprobe -v xfs &&
+swapoff -a &&
+dd if=/dev/zero of=/swap bs=1M count=6144 &&
+mkswap /swap
+echo '/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab &&
 apt update -y &&
 apt upgrade -y &&
 apt-get update && apt-get install vim nano sysstat vnstat curl -y &&

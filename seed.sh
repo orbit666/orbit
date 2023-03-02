@@ -27,7 +27,6 @@ mkdir -p /root/vertex &&
 chmod 777 /root/vertex &&
 docker run -d --name vertex --restart unless-stopped --network host -v /root/vertex:/vertex -e TZ=Asia/Shanghai lswl/vertex:stable &&
 echo -e "y\n1\nn\nn\ny\n" | bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Dedicated-Seedbox/main/Install.sh) orbit orbit 4096 &&
-bash <(wget -qO- https://raw.githubusercontent.com/orbit666/orbit/master/disktest.sh) &&
 
 # Yet Another Bench Script by Mason Rowe
 # Initial Oct 2019; Last update Feb 2023

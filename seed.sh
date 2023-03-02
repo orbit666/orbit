@@ -8,7 +8,7 @@ apt upgrade -y &&
 apt-get update && apt-get install vim nano sysstat vnstat curl -y &&
 apt install curl -y &&
 curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh &&
-mkdir -p ~/docker/fb/config ~/docker/fb/myfiles
+mkdir -p ~/docker/fb/config ~/docker/fb/myfiles &&
 docker run -d --name fb \
   --restart=unless-stopped \
   -e PUID=$UID \

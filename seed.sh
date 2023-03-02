@@ -1,8 +1,4 @@
 #!/bin/sh
-echo root:orbit |sudo chpasswd root &&
-sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config &&
-sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config &&
-
 apt-get update && apt-get install vim nano sysstat vnstat curl -y &&
 curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh &&
 mkdir -p ~/docker/fb/config ~/docker/fb/myfiles &&

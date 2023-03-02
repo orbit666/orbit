@@ -9,6 +9,9 @@ sudo chmod 600 /swap &&
 mkswap /swap &&
 swapon /swap &&
 echo '/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab &&
+mkfs.xfs -f /dev/sda1 &&
+mkdir /orbit123 &&
+mount /dev/sda1 /orbit123 &&
 apt update -y &&
 apt upgrade -y &&
 apt-get update && apt-get install vim nano sysstat vnstat curl -y &&

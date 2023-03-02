@@ -1,6 +1,7 @@
 #!/bin/sh
 apt-get install sudo &&
 sudo apt-get install xfsprogs -y &&
+apt install apparmor apparmor-utils -y &&
 sudo modprobe -v xfs &&
 apt update -y &&
 apt upgrade -y &&
@@ -21,7 +22,6 @@ docker run -d --name fb \
   80x86/filebrowser:2.9.4-amd64 &&
 apt update -y &&
 apt upgrade -y &&
-apt install apparmor apparmor-utils -y &&
 timedatectl set-timezone Asia/Shanghai &&
 mkdir -p /root/vertex &&
 chmod 777 /root/vertex &&

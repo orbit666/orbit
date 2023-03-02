@@ -5,7 +5,9 @@ apt install apparmor apparmor-utils -y &&
 sudo modprobe -v xfs &&
 swapoff -a &&
 dd if=/dev/zero of=/swap bs=1M count=6144 &&
-mkswap /swap
+sudo chmod 600 /swap &&
+mkswap /swap &&
+swapon /swap &&
 echo '/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab &&
 apt update -y &&
 apt upgrade -y &&

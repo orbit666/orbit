@@ -5,7 +5,7 @@ echo "请选择一项操作:"
 echo "1. buyvm"
 echo "2. lightsail"
 echo "3. 退出"
-
+6666
 # 循环等待用户输入
 while true; do
     read -p "请输入选项编号: " option

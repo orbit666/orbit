@@ -1,9 +1,9 @@
 #!/bin/sh
 sudo apt-get update -y && sudo apt-get upgrade -y
-echo root:orbit |sudo chpasswd root
+echo root:password |sudo chpasswd root
 sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
-#改root密码，并且设置可以密码登录
+#改root密码，并且设置可以密码登录,将上面的psaaword改成自己想要的root密码
 
 apt-get update && apt-get install vim nano sysstat vnstat curl -y
 #安装vim和curl

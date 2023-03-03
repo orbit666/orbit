@@ -11,8 +11,8 @@ mkdir /etc/caddy/
 #创建caddy文件夹
 
 cat <<EOF >> /etc/caddy/Caddyfile
-:443, orbit1024.top
-tls /etc/letsencrypt/live/orbit1024.top/fullchain.pem /etc/letsencrypt/live/orbit1024.top/privkey.pem
+:443, 666.com
+tls /etc/letsencrypt/live/666.com/fullchain.pem /etc/letsencrypt/live/666.com/privkey.pem
 route {
   forward_proxy {
     basic_auth 123 123
@@ -25,7 +25,7 @@ route {
   }
 }
 EOF
-#创建并填写caddy配置文件
+#创建并填写caddy配置文件,将666.com改成你的域名
 
 caddy fmt --overwrite /etc/caddy/Caddyfile
 #格式化caddy文件

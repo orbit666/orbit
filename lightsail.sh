@@ -31,32 +31,6 @@ cp caddy /usr/bin/
 setcap cap_net_bind_service=+ep /usr/bin/caddy
 #使用setcap命令设置 /usr/bin/caddy 可以非ROOT用户启动1024以下端口。
 
-mkdir /etc/caddy/
-# Define the Caddyfile path and name
-caddyfile="/etc/caddy/Caddyfile"
-
-# Define the Caddyfile content
-caddyfile_content=":443, example.com
-tls youremail@example.com
-route {
-  forward_proxy {
-    basic_auth yourname pass
-    hide_ip
-    hide_via
-    probe_resistance
-  }
-  file_server {
-    root /var/www/html 
-  }
-}"
-
-# Write the Caddyfile content to the file
-echo "$caddyfile_content" > "$caddyfile"
-
-# Restart the Caddy server
-sudo systemctl restart caddy.service
-
-
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
@@ -80,3 +54,5 @@ bash -c 'echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf'
 sysctl -p
 
 sudo certbot certonly --standalone
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+

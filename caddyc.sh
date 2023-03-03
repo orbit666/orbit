@@ -11,7 +11,7 @@ route {
   file_server {
     root /var/www/html 
   }
-}" > /etc/systemd/system/naive.service
+}" > /etc/caddy/Caddyfile
 
 caddy fmt --overwrite /etc/caddy/Caddyfile
 caddy run --config /etc/caddy/Caddyfile

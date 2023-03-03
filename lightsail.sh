@@ -17,24 +17,19 @@ source /etc/profile
 go version
 #查看go版本
 
+bash <(wget -qO- https://raw.githubusercontent.com/orbit666/orbit/master/caddy.sh)
+#安装并配置caddy
+
 sudo apt install snapd -y
 sudo snap install core
 sudo snap refresh core
 #安装snad
 
-
-go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
-~/go/bin/xcaddy build --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive
-#编译caddy
-cp caddy /usr/bin/
-/usr/bin/caddy version
-setcap cap_net_bind_service=+ep /usr/bin/caddy
-#使用setcap命令设置 /usr/bin/caddy 可以非ROOT用户启动1024以下端口。
-
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
-
+#安装cerbot用来获取证书 
 curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh
+#安装docker
 
 mkdir -p ~/docker/fb/config ~/docker/fb/myfiles
 docker run -d --name fb \
@@ -48,11 +43,13 @@ docker run -d --name fb \
   -v /:/myfiles \
   --mount type=tmpfs,destination=/tmp \
   80x86/filebrowser:2.9.4-amd64
+  #安装FBE
 
 bash -c 'echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf'
 bash -c 'echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf'
 sysctl -p
+#启用bbr
 
 sudo certbot certonly --standalone
-#安装cerbot
+#运行cerbot
 

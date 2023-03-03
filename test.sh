@@ -31,11 +31,11 @@ case "$option" in
         curl -sL yabs.sh | bash
         ;;
     3)
-        echo"色图来喽"
+        echo "色图来喽"
         bash <(wget -qO- https://raw.githubusercontent.com/orbit666/orbit/master/qrencode.sh)
         ;;
     4)
-        echo "退出脚本。"
+        echo "退出脚本"
         exit 0
         ;;
 esac

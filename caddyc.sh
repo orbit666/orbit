@@ -1,5 +1,5 @@
 mkdir /etc/caddy/
-echo "
+cat <<EOF >> /etc/caddy/Caddyfile
 :443, orbit1024.top
 tls /etc/letsencrypt/live/orbit1024.top/fullchain.pem /etc/letsencrypt/live/orbit1024.top/privkey.pem
 route {
@@ -12,13 +12,13 @@ route {
   file_server {
     root /var/www/html 
   }
-}" > /etc/caddy/Caddyfile
+}
+EOF
 
 caddy fmt --overwrite /etc/caddy/Caddyfile
 caddy run --config /etc/caddy/Caddyfile
 
-
-echo "[Unit]
+cat <<EOF >> /etc/systemd/system/naive.service
 Description=Caddy
 Documentation=https://caddyserver.com/docs/
 After=network.target network-online.target
@@ -36,7 +36,8 @@ PrivateTmp=true
 ProtectSystem=full
 AmbientCapabilities=CAP_NET_BIND_SERVICE
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/naive.service
+WantedBy=multi-user.target
+EOF
 
 systemctl daemon-reload
 systemctl enable naive

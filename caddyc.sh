@@ -1,4 +1,5 @@
 mkdir /etc/caddy/
+mkdir /etc/caddy/Caddyfile
 echo "
 :443, orbit1024.top
 tls /etc/letsencrypt/live/orbit1024.top/fullchain.pem /etc/letsencrypt/live/orbit1024.top/privkey.pem

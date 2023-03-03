@@ -8,8 +8,8 @@ sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/s
 apt-get update && apt-get install vim nano sysstat vnstat curl -y
 #安装vim和curl
 
-wget https://go.dev/dl/go1.19.linux-amd64.tar.gz
-tar -zxvf go1.19.linux-amd64.tar.gz -C /usr/local/
+wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz
+tar -zxvf go1.20.1.linux-amd64.tar.gz -C /usr/local/
 #安装go
 echo export PATH=$PATH:/usr/local/go/bin  >> /etc/profile
 source /etc/profile

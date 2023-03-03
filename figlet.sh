@@ -1,5 +1,5 @@
 #!/bin/bash
 sudo apt-get install figlet
-figlet "orbit"
+figlet -w 120 -f small orbit
 
 

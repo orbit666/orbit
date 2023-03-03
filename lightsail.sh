@@ -54,5 +54,5 @@ bash -c 'echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf'
 sysctl -p
 
 sudo certbot certonly --standalone
-sudo ln -s /snap/bin/certbot /usr/bin/certbot
+#安装cerbot
 

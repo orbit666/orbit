@@ -1,12 +1,9 @@
-# Define the Caddyfile path and name
-caddyfile="/etc/caddy/Caddyfile"
-
-# Define the Caddyfile content
-caddyfile_content=":443, orbit1024.top
+echo "
+:443, orbit1024.top
 tls /etc/letsencrypt/live/orbit1024.top/fullchain.pem /etc/letsencrypt/live/orbit1024.top/privkey.pem
 route {
   forward_proxy {
-    basic_auth yourname pass
+    basic_auth 123 123
     hide_ip
     hide_via
     probe_resistance
@@ -14,12 +11,8 @@ route {
   file_server {
     root /var/www/html 
   }
-}"
+}" > /etc/systemd/system/naive.service
 
-# Write the Caddyfile content to the file
-echo "$caddyfile_content" > "$caddyfile"
-
-# Restart the Caddy server
 caddy fmt --overwrite /etc/caddy/Caddyfile
 caddy run --config /etc/caddy/Caddyfile
 

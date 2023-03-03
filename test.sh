@@ -2,9 +2,9 @@
 
 # 显示菜单选项
 echo "请选择一项操作:"
-echo -e "\033[1m\033[34m1. buyvm\033[0m"
-echo "2. "\033[1m\033[34m1. lightsail\033[0m"
-echo "3. "\033[1m\033[34m1. 退出\033[0m"
+echo -e "\033[1m\033[34m1. 1.buyvm\033[0m"
+echo -e "\033[1m\033[34m1. 2.lightsail\033[0m"
+echo -e "\033[1m\033[34m1. 3.退出\033[0m"
 
 # 循环等待用户输入
 while true; do
